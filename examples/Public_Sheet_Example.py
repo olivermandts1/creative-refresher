@@ -3,7 +3,7 @@ from streamlit_gsheets import GSheetsConnection
 
 st.subheader("📗 Google Sheets Connection using Public URLs")
 
-url = "https://docs.google.com/spreadsheets/d/141YaOszXibklI2qqRiyGdox3mpyCioFK5eJMtD78iJE/edit?usp=sharing"
+url = "https://docs.google.com/spreadsheets/d/1BkD450mJ4MJA7xuMi0MFrb79_bXsS_9HaSLTykKRccE/edit?usp=sharing"
 
 st.write("#### Read Specific Worksheet as Pandas DataFrame")
 
@@ -14,9 +14,9 @@ with st.echo():
     # Read a specific worksheet from the Google Sheet
     df = conn.read(
         spreadsheet=url,
-        worksheet="FB Asset Building",  # Specify the worksheet name
+        worksheet="Sheet2",  # Specify the worksheet name
         ttl="10m",                     # Cache time-to-live
-        usecols=[0, 1],                # Select specific columns
+        usecols=[0],                # Select specific columns
         nrows=3                        # Number of rows to read
     )
     st.dataframe(df)
