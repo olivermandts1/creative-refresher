@@ -13,7 +13,7 @@ with st.echo():
 
     # Read data from the Google Sheet
     df = conn.read(spreadsheet=url)
-    desired_range = df.iloc[99:124, 1:2]  # Rows 100-124 and columns A-B (0-indexed)
+    desired_range = df.iloc[99:124, 0:2]  # Rows 100-124 and columns A-B (0-indexed)
 
     # Hardcoding specific values in column A
     desired_range.iloc[0:5, 0] = 'Headlines'      # Rows 100-104
