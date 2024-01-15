@@ -13,11 +13,7 @@ with st.echo():
 
     # Read a specific worksheet from the Google Sheet
     df = conn.read(
-        spreadsheet=url,
-        worksheet="Sheet2",  # Specify the worksheet name
-        ttl="10m",                     # Cache time-to-live
-        usecols=[0],                # Select specific columns
-        nrows=3                        # Number of rows to read
+
     )
     st.dataframe(df)
 
