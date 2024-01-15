@@ -20,6 +20,9 @@ with st.echo():
     desired_range.iloc[6:11, 0] = 'Primary Text'  # Rows 106-110
     desired_range.iloc[12:17, 0] = 'Description'  # Rows 112-116
     desired_range.iloc[19:24, 0] = 'Forcekeys'    # Rows 119-123
+    
+    # Replace NaN values with an empty string
+    desired_range.fillna('', inplace=True)
 
 # Use st.markdown with HTML and CSS to enable text wrapping
 st.markdown("""
