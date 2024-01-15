@@ -35,7 +35,7 @@ st.markdown("""
 }
 .dataframe td {
     min-width: 50px;
-    max-width: 150px;
+    max-width: 700px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
