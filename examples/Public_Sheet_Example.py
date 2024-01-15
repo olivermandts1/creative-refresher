@@ -22,7 +22,7 @@ with st.echo():
     desired_range.iloc[19:24, 0] = 'Forcekeys'    # Rows 119-123
 
     # Display the DataFrame with expanded width
-    st.dataframe(desired_range, width=700)
+    st.dataframe(desired_range, width=1400)
 
 st.write("#### 2. Query public Google Worksheet using SQL")
 st.info(
