@@ -1,19 +1,24 @@
 import streamlit as st
+from streamlit_gsheets import GSheetsConnection
 
-st.subheader("📗 Google Sheets st.connection using Public URLs")
+st.subheader("📗 Google Sheets Connection using Public URLs")
 
 url = "https://docs.google.com/spreadsheets/d/141YaOszXibklI2qqRiyGdox3mpyCioFK5eJMtD78iJE/edit?usp=sharing"
 
-st.write("#### 1. Read public Google Worksheet as Pandas")
+st.write("#### Read Specific Worksheet as Pandas DataFrame")
 
 with st.echo():
-    import streamlit as st
-
-    from streamlit_gsheets import GSheetsConnection
-
+    # Create a connection using Streamlit's experimental connection feature
     conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    df = conn.read(spreadsheet=url, usecols=[0, 1])
+    # Read a specific worksheet from the Google Sheet
+    df = conn.read(
+        spreadsheet=url,
+        worksheet="FB Asset Building",  # Specify the worksheet name
+        ttl="10m",                     # Cache time-to-live
+        usecols=[0, 1],                # Select specific columns
+        nrows=3                        # Number of rows to read
+    )
     st.dataframe(df)
 
 st.write("#### 2. Query public Google Worksheet using SQL")
