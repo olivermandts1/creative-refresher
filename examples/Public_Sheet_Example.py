@@ -26,11 +26,11 @@ desired_range.fillna('', inplace=True)
 # Rename the columns
 desired_range.columns = ['Asset Type', 'Creative Text']
 
-# Store values
-headlines = desired_range[desired_range['Asset Type'] == 'Headlines']['Creative Text'].tolist()
-primary_text = desired_range[desired_range['Asset Type'] == 'Primary Text']['Creative Text'].tolist()
-descriptions = desired_range[desired_range['Asset Type'] == 'Description']['Creative Text'].tolist()
-forcekeys = desired_range[desired_range['Asset Type'] == 'Forcekeys']['Creative Text'].tolist()
+# Store values, omitting nulls
+headlines = [text for text in desired_range[desired_range['Asset Type'] == 'Headlines']['Creative Text'] if text]
+primary_text = [text for text in desired_range[desired_range['Asset Type'] == 'Primary Text']['Creative Text'] if text]
+descriptions = [text for text in desired_range[desired_range['Asset Type'] == 'Description']['Creative Text'] if text]
+forcekeys = [text for text in desired_range[desired_range['Asset Type'] == 'Forcekeys']['Creative Text'] if text]
 
 # Use st.expander to create a toggle for showing the full table
 with st.expander("Show Full Table", expanded=True):
