@@ -23,6 +23,9 @@ desired_range.iloc[19:24, 0] = 'Forcekeys'    # Rows 119-123
 # Replace NaN values with an empty string
 desired_range.fillna('', inplace=True)
 
+# Rename the columns
+desired_range.columns = ['Asset Type', 'Creative Text']
+
 # Use st.markdown with HTML and CSS to enable text wrapping
 st.markdown("""
 <style>
@@ -50,12 +53,3 @@ st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=
 
 
 
-with st.echo():
-    import streamlit as st
-
-    from streamlit_gsheets import GSheetsConnection
-
-    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-
-    df = conn.query('select births from "Example 2" limit 10', spreadsheet=url)
-    st.dataframe(df)
