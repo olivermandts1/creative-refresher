@@ -21,20 +21,31 @@ with st.echo():
     desired_range.iloc[12:17, 0] = 'Description'  # Rows 112-116
     desired_range.iloc[19:24, 0] = 'Forcekeys'    # Rows 119-123
 
-    # Display the DataFrame with expanded width
-    st.dataframe(desired_range, width=1400)
+# Use st.markdown with HTML and CSS to enable text wrapping
+st.markdown("""
+<style>
+.dataframe th, .dataframe td {
+    white-space: nowrap;
+    text-align: left;
+    border: 1px solid black;
+    padding: 5px;
+}
+.dataframe th {
+    background-color: #f0f0f0;
+}
+.dataframe td {
+    min-width: 50px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+</style>
+""", unsafe_allow_html=True)
 
-st.write("#### 2. Query public Google Worksheet using SQL")
-st.info(
-    "Mutation SQL queries are in-memory only and do not results in the Worksheet update.",
-    icon="ℹ️",
-)
-st.warning(
-    """You can query only one Worksheet in provided public Spreadsheet,
-        use Worksheet name as target in from SQL queries.
-        The worksheet, which you query is defined by GID query parameter or GID parameters to query method.""",
-    icon="⚠️",
-)
+# Display the DataFrame with text wrapping
+st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
+
 
 
 with st.echo():
