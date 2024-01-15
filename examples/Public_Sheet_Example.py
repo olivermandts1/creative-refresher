@@ -2,7 +2,7 @@ import streamlit as st
 
 st.subheader("📗 Google Sheets st.connection using Public URLs")
 
-url = "https://docs.google.com/spreadsheets/d/1BkD450mJ4MJA7xuMi0MFrb79_bXsS_9HaSLTykKRccE/edit#gid=1465532381"
+url = "https://docs.google.com/spreadsheets/d/141YaOszXibklI2qqRiyGdox3mpyCioFK5eJMtD78iJE/edit#gid=962857946"
 
 st.write("#### 1. Read public Google Worksheet as Pandas")
 
