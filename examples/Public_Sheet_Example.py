@@ -26,6 +26,12 @@ desired_range.fillna('', inplace=True)
 # Rename the columns
 desired_range.columns = ['Asset Type', 'Creative Text']
 
+# Store values
+headlines = desired_range[desired_range['Asset Type'] == 'Headlines']['Creative Text'].tolist()
+primary_text = desired_range[desired_range['Asset Type'] == 'Primary Text']['Creative Text'].tolist()
+descriptions = desired_range[desired_range['Asset Type'] == 'Description']['Creative Text'].tolist()
+forcekeys = desired_range[desired_range['Asset Type'] == 'Forcekeys']['Creative Text'].tolist()
+
 # Use st.expander to create a toggle for showing the full table
 with st.expander("Show Full Table", expanded=True):
     # Use st.markdown with HTML and CSS to enable text wrapping inside the expander
@@ -53,5 +59,9 @@ with st.expander("Show Full Table", expanded=True):
     # Display the DataFrame with text wrapping inside the expander
     st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
 
-
-
+# Displaying stored values
+st.write("#### Stored Values Test")
+st.write("Headlines:", headlines)
+st.write("Primary Text:", primary_text)
+st.write("Descriptions:", descriptions)
+st.write("Forcekeys:", forcekeys)
