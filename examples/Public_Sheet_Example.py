@@ -26,30 +26,32 @@ desired_range.fillna('', inplace=True)
 # Rename the columns
 desired_range.columns = ['Asset Type', 'Creative Text']
 
-# Use st.markdown with HTML and CSS to enable text wrapping
-st.markdown("""
-<style>
-.dataframe th, .dataframe td {
-    white-space: nowrap;
-    text-align: left;
-    border: 1px solid black;
-    padding: 5px;
-}
-.dataframe th {
-    background-color: #f0f0f0;
-}
-.dataframe td {
-    min-width: 50px;
-    max-width: 700px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-}
-</style>
-""", unsafe_allow_html=True)
+# Use st.expander to create a toggle for showing the full table
+with st.expander("Show Full Table"):
+    # Use st.markdown with HTML and CSS to enable text wrapping inside the expander
+    st.markdown("""
+    <style>
+    .dataframe th, .dataframe td {
+        white-space: nowrap;
+        text-align: left;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    .dataframe th {
+        background-color: #f0f0f0;
+    }
+    .dataframe td {
+        min-width: 50px;
+        max-width: 700px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-# Display the DataFrame with text wrapping
-st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
+    # Display the DataFrame with text wrapping inside the expander
+    st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
 
