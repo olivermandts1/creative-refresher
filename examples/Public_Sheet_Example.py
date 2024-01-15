@@ -13,7 +13,7 @@ with st.echo():
 
     conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    df = conn.read(spreadsheet=url, usecols=[0])
+    df = conn.read(spreadsheet=url, range="A101:B124")
     st.dataframe(df)
 
 st.write("#### 2. Query public Google Worksheet using SQL")
