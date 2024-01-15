@@ -13,8 +13,9 @@ with st.echo():
 
     conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    df = conn.read(spreadsheet=url, range="A101:B124")
-    st.dataframe(df)
+    df = conn.read(spreadsheet=url)
+    desired_range = df.iloc[100:124, 0:2]  # Rows 101-124 and columns A-B (0-indexed)
+    st.dataframe(desired_range)
 
 st.write("#### 2. Query public Google Worksheet using SQL")
 st.info(
