@@ -27,7 +27,7 @@ desired_range.fillna('', inplace=True)
 desired_range.columns = ['Asset Type', 'Creative Text']
 
 # Use st.expander to create a toggle for showing the full table
-with st.expander("Show Full Table"):
+with st.expander("Show Full Table", expanded=True):
     # Use st.markdown with HTML and CSS to enable text wrapping inside the expander
     st.markdown("""
     <style>
