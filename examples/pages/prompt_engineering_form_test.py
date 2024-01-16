@@ -6,7 +6,7 @@ from streamlit_gsheets import GSheetsConnection
 def append_data_to_sheet(data, worksheet_name, spreadsheet_url):
     conn = st.experimental_connection("gsheets", type=GSheetsConnection)
     df = pd.DataFrame([data])
-    conn.append(spreadsheet=spreadsheet_url, worksheet=worksheet_name, dataframe=df)
+    conn.update(spreadsheet=spreadsheet_url, worksheet=worksheet_name, dataframe=df)
 
 # Streamlit form
 with st.form("my_form"):
