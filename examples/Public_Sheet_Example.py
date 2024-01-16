@@ -59,8 +59,7 @@ with st.expander("Show Full Table", expanded=True):
     # Display the DataFrame with text wrapping inside the expander
     st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
 
-import langchain
-from langchain import OpenAI
+from openai import OpenAI
 
 # User inputs their OpenAI API key in the sidebar
 openai_api_key = st.secrets["openai_secret"]
