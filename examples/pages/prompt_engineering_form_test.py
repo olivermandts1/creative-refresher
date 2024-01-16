@@ -11,7 +11,7 @@ conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 # Fetch existing data
 worksheet_name = "Test"
-existing_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU",worksheet=worksheet_name, usecols=[0], ttl=5)
+existing_data = conn.read(worksheet="954337905", usecols=[0], ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 # Data Submission Form
