@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
-url = "https://docs.google.com/spreadsheets/d/1KfmPxVyEDDjYy3qcxHi93-xvp3z4mO6kmtdW-x5i8nk/edit?usp=sharing&resourcekey=0-KZK01JEmGoaedn7zeJfKwg"
+url = "https://docs.google.com/spreadsheets/d/1HhIXQfl8TaPABVJF10NY1XAac5PkKTIRTJCrKr8RpKo/edit#gid=962857946"
 
 
 # Create a connection using Streamlit's experimental connection feature
