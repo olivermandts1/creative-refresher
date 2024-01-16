@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
+url = "https://docs.google.com/spreadsheets/d/141YaOszXibklI2qqRiyGdox3mpyCioFK5eJMtD78iJE/edit#gid=962857946"
+
 
 # Create a connection using Streamlit's experimental connection feature
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
