@@ -3,7 +3,7 @@ from streamlit_gsheets import GSheetsConnection
 
 st.subheader("📗 Refresh FB Creatives From Your Plutus Spreadsheet")
 
-url = "https://docs.google.com/spreadsheets/d/141YaOszXibklI2qqRiyGdox3mpyCioFK5eJMtD78iJE/edit#gid=962857946"
+url = "https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU/edit#gid=1913725997"
 
 st.write("#### 1. Retrieved Plutus Creatives")
 
