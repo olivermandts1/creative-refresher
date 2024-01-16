@@ -11,7 +11,7 @@ conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 # Define the spreadsheet ID and worksheet name
 spreadsheet_id = "1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU"
-worksheet_name = "Prompt Chains"
+worksheet_name = "PromptChains"
 
 # Fetch existing data
 existing_data = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, usecols=[0], ttl=5)
