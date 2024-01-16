@@ -1,3 +1,5 @@
+import streamlit as st
+from streamlit_gsheets import GSheetsConnection
 from openai import OpenAI
 
 # User inputs their OpenAI API key in the sidebar
