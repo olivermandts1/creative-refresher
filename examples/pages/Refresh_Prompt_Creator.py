@@ -30,7 +30,7 @@ descriptions = [text for text in desired_range[desired_range['Asset Type'] == 'D
 forcekeys = [text for text in desired_range[desired_range['Asset Type'] == 'Forcekeys']['Creative Text'] if text]
 
 # Use st.expander to create a toggle for showing the full table
-with st.expander("Show Full Table", expanded=True):
+with st.expander("Show Full Table"):
     # Use st.markdown with HTML and CSS to enable text wrapping inside the expander
     st.markdown("""
     <style>
