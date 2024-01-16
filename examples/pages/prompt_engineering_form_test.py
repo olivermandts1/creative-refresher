@@ -9,15 +9,17 @@ st.markdown("Enter your data below.")
 # Establishing a Google Sheets connection
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-# Fetch existing data
+# Define the spreadsheet URL and worksheet name
+spreadsheet_url = "https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU/edit"
 worksheet_name = "Prompt Chains"
-existing_data = conn.read(worksheet=worksheet_name, usecols=[0], ttl=5)
+
+# Fetch existing data
+existing_data = conn.read(spreadsheet=spreadsheet_url, worksheet=worksheet_name, usecols=[0], ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 # Data Submission Form
 with st.form(key="data_form"):
     test_field = st.text_input(label="Test Field")
-
     submit_button = st.form_submit_button(label="Submit")
 
     # If the submit button is pressed
@@ -28,18 +30,12 @@ with st.form(key="data_form"):
             st.stop()
         else:
             # Create a new row of data
-            new_data = pd.DataFrame(
-                [
-                    {
-                        "Test Field": test_field
-                    }
-                ]
-            )
+            new_data = pd.DataFrame([{"Test Field": test_field}])
 
             # Add the new data to the existing data
             updated_df = pd.concat([existing_data, new_data], ignore_index=True)
 
             # Update Google Sheets with the new data
-            conn.update(worksheet=worksheet_name, data=updated_df)
+            conn.update(spreadsheet=spreadsheet_url, worksheet=worksheet_name, data=updated_df)
 
             st.success("Data successfully submitted!")
