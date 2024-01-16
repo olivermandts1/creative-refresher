@@ -10,7 +10,7 @@ st.markdown("Enter your data below.")
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 # Fetch existing data
-worksheet_name = "PromptChains"
+worksheet_name = "Test"
 existing_data = conn.read(spreadsheet=worksheet_name, usecols=[0], ttl=5)
 existing_data = existing_data.dropna(how="all")
 
