@@ -10,7 +10,7 @@ st.markdown("Enter your data below.")
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
 # Define the spreadsheet URL and worksheet name
-spreadsheet_url = "https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU/edit"
+spreadsheet_url = "https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU"
 worksheet_name = "Prompt Chains"
 
 # Fetch existing data
