@@ -127,7 +127,7 @@ for i in range(st.session_state['form_count']):
         user_prompt = st.text_area('User Prompt', key=f'user_{i}')
 
 # Single submit button for all inputs
-if st.button('Submit All'):
+if st.button('Test Promptchain'):
     if not openai_api_key:
         st.warning('Please enter your OpenAI API key!', icon='⚠️')
     else:
