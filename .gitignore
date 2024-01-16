@@ -301,10 +301,8 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/python,jetbrains,venv
 
 .streamlit/secrets.toml
-.streamlit/service_account_creds.json
 cli/.streamlit/secrets.toml
 /examples/.streamlit/secrets.toml
-/examples/.streamlit/service_account_creds.json
 *.db
 test-files/*
 *venv/*
