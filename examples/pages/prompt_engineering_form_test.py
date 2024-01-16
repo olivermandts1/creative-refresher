@@ -1,22 +1,45 @@
 import streamlit as st
-import pandas as pd
 from streamlit_gsheets import GSheetsConnection
+import pandas as pd
 
-# Function to append data to Google Sheet
-def append_data_to_sheet(data, worksheet_name, spreadsheet_url):
-    conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-    df = pd.DataFrame([data])
-    conn.update(spreadsheet=spreadsheet_url, worksheet=worksheet_name, dataframe=df)
+# Display Title and Description
+st.title("Data Submission Form")
+st.markdown("Enter your data below.")
 
-# Streamlit form
-with st.form("my_form"):
-    test_field = st.text_input("Test Field")
-    submitted = st.form_submit_button("Submit")
+# Establishing a Google Sheets connection
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 
-    if submitted:
-        spreadsheet_url = "https://docs.google.com/spreadsheets/d/1tqm7G0yzckwSCKXdPcGcWNH6y5nMj68rhpMQZlcO2wU/edit?usp=sharing"
-        worksheet_name = "Prompt Chains"
-        append_data_to_sheet({"Test Field": test_field}, worksheet_name, spreadsheet_url)
-        st.success("Data submitted!")
+# Fetch existing data
+worksheet_name = "Prompt Chains"
+existing_data = conn.read(worksheet=worksheet_name, usecols=[0], ttl=5)
+existing_data = existing_data.dropna(how="all")
 
-# Note: Replace "YOUR_SPREADSHEET_URL" with the URL of your Google Sheet.
+# Data Submission Form
+with st.form(key="data_form"):
+    test_field = st.text_input(label="Test Field")
+
+    submit_button = st.form_submit_button(label="Submit")
+
+    # If the submit button is pressed
+    if submit_button:
+        # Check if the field is filled
+        if not test_field:
+            st.warning("Please fill in the test field.")
+            st.stop()
+        else:
+            # Create a new row of data
+            new_data = pd.DataFrame(
+                [
+                    {
+                        "Test Field": test_field
+                    }
+                ]
+            )
+
+            # Add the new data to the existing data
+            updated_df = pd.concat([existing_data, new_data], ignore_index=True)
+
+            # Update Google Sheets with the new data
+            conn.update(worksheet=worksheet_name, data=updated_df)
+
+            st.success("Data successfully submitted!")
