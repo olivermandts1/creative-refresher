@@ -60,7 +60,7 @@ with st.expander("Show Full Table", expanded=True):
     st.markdown(desired_range.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
-import openai
+from openai import OpenAI
 
 # User inputs their OpenAI API key in the sidebar
 openai_api_key = st.secrets["openai_secret"]
@@ -81,7 +81,7 @@ def replace_dynamic_keys(prompt):
 
 # Function to generate response using OpenAI API
 def generate_response(system_prompt, user_prompt, model="gpt-4", temperature=0.00):
-    client = openai(api_key=openai_api_key)
+    client = OpenAI(api_key=openai_api_key)
 
     # Replace dynamic keys with actual values
     system_prompt = replace_dynamic_keys(system_prompt)
